@@ -2,6 +2,15 @@ require 'capybara'
 require 'capybara/rspec'
 require 'rspec'
 require_relative '../app'
+require 'simplecov'
+require 'simplecov-console'
+
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
+ SimpleCov::Formatter::Console,
+])
+SimpleCov.start do
+ add_filter "feature_spec"
+end
 
 Capybara.app = BookmarkManager
 
