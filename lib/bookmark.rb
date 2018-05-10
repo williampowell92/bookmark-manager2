@@ -1,4 +1,5 @@
 require 'pg'
+require 'uri'
 
 class Bookmark
 
@@ -11,6 +12,10 @@ class Bookmark
   def self.add(url)
     connect_to_database
     @@con.exec "INSERT INTO bookmarks(url) VALUES('#{url}')"
+  end
+
+  def self.valid?(url)
+    !!(url =~ /\A#{URI::regexp(['http', 'https'])}\z/)
   end
 
   private

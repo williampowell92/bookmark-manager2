@@ -18,7 +18,11 @@ class BookmarkManager < Sinatra::Base
   end
 
   post '/add-bookmark' do
-    Bookmark.add(params['new-bookmark'])
+    if Bookmark.valid?(params['new-bookmark'])
+      Bookmark.add(params['new-bookmark'])
+    else
+      flash[:invalid_url] = 'Invalid url'
+    end
 
     redirect('/')
   end

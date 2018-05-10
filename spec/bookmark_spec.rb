@@ -18,4 +18,13 @@ describe Bookmark do
     end
   end
 
+  describe '#valid' do
+    it 'returns false for invalid url' do
+      expect(described_class.valid?('Im not a url')).to be false
+    end
+
+    it 'returns true for a valid url' do
+      expect(described_class.valid?('http://www.google.com')).to be true
+    end
+  end
 end
