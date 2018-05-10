@@ -1,7 +1,7 @@
 <%= flash[:invalid_url] %>
 <ul>
   <% @bookmarks.each do |bookmark| %>
-  <a href='<%= bookmark.url %>'<li><%= bookmark.title %></li></a>
+  <li><a href='<%= bookmark.url %>'><%= bookmark.title %></a></li>
   <% end %>
 </ul>
 <a href='/add-bookmark'>add bookmark</a>
