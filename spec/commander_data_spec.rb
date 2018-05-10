@@ -1,21 +1,15 @@
 require_relative '../lib/commander_data'
 
 describe CommanderData do
-  let(:bookmark_class) { double :bookmark_class, new: nil} 
+  let(:bookmark_class) { double :bookmark_class, new: nil}
 
   describe '#all' do
     it 'returns urls from database' do
-      described_class.add('http://google.com')
-      described_class.add('http://destroyallsoftware.com')
-      described_class.add('http://outlook.com')
-      expect(described_class.all).to eq(['http://google.com', 'http://destroyallsoftware.com', 'http://outlook.com'])
-    end
-  end
-
-  describe '#add' do
-    it 'adds a bookmark to the database' do
-      described_class.add('Google','http://google.com')
-      expect(described_class.all).to eq(['http://google.com'])
+      title = 'Google'
+      url = 'http://google.com'
+      described_class.add(title, url)
+      described_class.all(bookmark_class)
+      expect(bookmark_class).to have_received(:new).with(title, url)
     end
   end
 

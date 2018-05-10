@@ -4,7 +4,7 @@ feature 'adding bookmarks' do
     click_link('add bookmark')
   end
 
-  xscenario 'adding valid bookmark' do
+  fscenario 'adding valid bookmark' do
     fill_in('new-bookmark', with: 'http://www.google.com')
     fill_in('new-title', with: 'Google')
     click_button('Save')

@@ -19,7 +19,7 @@ class BookmarkManager < Sinatra::Base
 
   post '/add-bookmark' do
     if CommanderData.valid?(params['new-bookmark'])
-      CommanderData.add(params['new-bookmark'])
+      CommanderData.add(params['new-title'], params['new-bookmark'])
     else
       flash[:invalid_url] = 'Invalid url'
     end

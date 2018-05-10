@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/John/Projects/week4/bookmark-manager2/spec/bookmark_spec.rb": [
+      "/Users/williampowell/Google Drive/Projects/bookmark_manager/spec/bookmark_spec.rb": [
         1,
         null,
         1,
@@ -20,19 +20,7 @@
         null,
         null
       ],
-      "/Users/John/Projects/week4/bookmark-manager2/lib/bookmark.rb": [
-        1,
-        null,
-        1,
-        null,
-        1,
-        2,
-        2,
-        null,
-        null,
-        null
-      ],
-      "/Users/John/Projects/week4/bookmark-manager2/spec/commander_data_spec.rb": [
+      "/Users/williampowell/Google Drive/Projects/bookmark_manager/spec/commander_data_spec.rb": [
         1,
         null,
         1,
@@ -44,13 +32,7 @@
         1,
         1,
         1,
-        null,
-        null,
-        null,
         1,
-        1,
-        1,
-        0,
         null,
         null,
         null,
@@ -65,19 +47,11 @@
         null,
         null
       ],
-      "/Users/John/Projects/week4/bookmark-manager2/spec/features/adding_bookmark_spec.rb": [
+      "/Users/williampowell/Google Drive/Projects/bookmark_manager/spec/features/adding_bookmark_spec.rb": [
         1,
         1,
-        1,
-        1,
-        null,
-        null,
-        1,
-        0,
-        0,
-        0,
-        0,
-        0,
+        2,
+        2,
         null,
         null,
         1,
@@ -87,10 +61,7 @@
         1,
         1,
         null,
-        null
-      ],
-      "/Users/John/Projects/week4/bookmark-manager2/spec/features/rendering_bookmarks_spec.rb": [
-        1,
+        null,
         1,
         1,
         1,
@@ -100,11 +71,24 @@
         null,
         null
       ],
-      "/Users/John/Projects/week4/bookmark-manager2/spec/setup_test_database.rb": [
+      "/Users/williampowell/Google Drive/Projects/bookmark_manager/spec/features/rendering_bookmarks_spec.rb": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null
+      ],
+      "/Users/williampowell/Google Drive/Projects/bookmark_manager/spec/setup_test_database.rb": [
         1,
         1
       ]
     },
-    "timestamp": 1525946947
+    "timestamp": 1525948837
   }
 }

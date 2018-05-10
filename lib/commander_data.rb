@@ -1,17 +1,19 @@
 require 'pg'
 require 'uri'
 
+require_relative './bookmark'
+
 class CommanderData
 
-  def self.all
+  def self.all(bookmark_class = Bookmark)
     connect_to_database
     rs = @@con.exec "SELECT * FROM bookmarks"
-    rs.map { |result| result["url"] }
+    rs.map { |row| bookmark_class.new(row['title'], row['url']) }
   end
 
-  def self.add(url)
+  def self.add(title, url)
     connect_to_database
-    @@con.exec "INSERT INTO bookmarks(url) VALUES('#{url}')"
+    @@con.exec "INSERT INTO bookmarks(title, url) VALUES('#{title}', '#{url}')"
   end
 
   def self.valid?(url)
@@ -29,3 +31,14 @@ class CommanderData
   end
 
 end
+
+#
+# def self.all(bookmark_class = Bookmark)
+#   connect_to_database
+#   rs = @@con.exec "SELECT * FROM bookmarks"
+#   rs.map { |row| bookmark_class.new(row['title'], row['url']) }
+# end
+#
+# def self.add
+#
+# end
