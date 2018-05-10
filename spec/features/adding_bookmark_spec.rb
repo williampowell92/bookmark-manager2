@@ -10,6 +10,5 @@ feature 'adding bookmarks' do
     visit('/')
     add_bookmark('What am I', 'Not a url')
     expect(page).to have_content('Invalid url')
-    expect(page).to have_no_content('What am I')
   end
 end

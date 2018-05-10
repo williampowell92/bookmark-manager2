@@ -20,11 +20,11 @@ class BookmarkManager < Sinatra::Base
   post '/add-bookmark' do
     if CommanderData.valid?(params['new-bookmark'])
       CommanderData.add(params['new-title'], params['new-bookmark'])
+      redirect('/')
     else
       flash[:invalid_url] = 'Invalid url'
+      redirect('/add-bookmark')
     end
-
-    redirect('/')
   end
 
   get '/delete-bookmark' do
@@ -40,6 +40,7 @@ class BookmarkManager < Sinatra::Base
   end
 
   get '/update-bookmark' do
+
     @bookmarks = CommanderData.all
 
     erb(:update_bookmark)
@@ -51,7 +52,7 @@ class BookmarkManager < Sinatra::Base
     erb(:update_form)
   end
 
-  post '/update-action' do\
+  post '/update-action' do
     CommanderData.update(session['old_title'],
                          params['new-title'],
                          params['new-bookmark'])
