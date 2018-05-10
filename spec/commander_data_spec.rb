@@ -22,4 +22,14 @@ describe CommanderData do
       expect(described_class.valid?('http://www.google.com')).to be true
     end
   end
+
+  describe '#delete' do
+    it 'deletes the row' do
+      title = 'Google'
+      url = 'http://google.com'
+      described_class.add(title, url)
+      described_class.delete(title)
+      expect(described_class.all).to be_empty
+    end
+  end
 end

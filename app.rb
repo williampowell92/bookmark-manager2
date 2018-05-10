@@ -27,6 +27,17 @@ class BookmarkManager < Sinatra::Base
     redirect('/')
   end
 
+  get '/delete-bookmark' do
+    @bookmarks = CommanderData.all
+
+    erb(:delete_bookmark)
+  end
+
+  get '/delete-action' do
+    CommanderData.delete(params['bookmark'])
+    redirect('/')
+  end
+
   run! if app_file == $0
 
 end
