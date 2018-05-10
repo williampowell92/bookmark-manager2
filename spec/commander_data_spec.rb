@@ -2,6 +2,7 @@ require_relative '../lib/commander_data'
 
 describe CommanderData do
   let(:bookmark_class) { double :bookmark_class, new: nil}
+  let(:connection) { double :database_connection, exec: nil }
 
   describe '#all' do
     it 'returns urls from database' do
@@ -30,6 +31,19 @@ describe CommanderData do
       described_class.add(title, url)
       described_class.delete(title)
       expect(described_class.all).to be_empty
+    end
+  end
+
+  fdescribe '#update' do
+    it 'updates an entry' do
+      old_title = 'Boogle'
+      old_url = 'http://goggle.com'
+      new_title = 'Google'
+      new_url = 'http://google.com'
+      described_class.add(old_title, old_url)
+      described_class.update(old_title, new_title, new_url, connection)
+      expect(connection).to have_received(:exec).with("UPDATE bookmarks SET title = '#{new_title}', url = '#{new_url}' WHERE title = '#{old_title}'")
+
     end
   end
 end

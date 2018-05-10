@@ -35,7 +35,28 @@ class BookmarkManager < Sinatra::Base
 
   get '/delete-action' do
     CommanderData.delete(params['bookmark'])
+
     redirect('/')
+  end
+
+  get '/update-bookmark' do
+    @bookmarks = CommanderData.all
+
+    erb(:update_bookmark)
+  end
+
+  get '/update-form' do
+    session[:old_title] = params['bookmark']
+
+    erb(:update_form)
+  end
+
+  post '/update-action' do\
+    CommanderData.update(session['old_title'],
+                         params['new-title'],
+                         params['new-bookmark'])
+
+   redirect('/')
   end
 
   run! if app_file == $0

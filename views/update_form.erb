@@ -1,7 +1,9 @@
-<form action='add-bookmark' method='post'>
+<h1>Updating <%= params['bookmark'] %></h1>
+
+<form action='update-action' method='post'>
   <label for='new-title'>Bookmark title</label>
   <input type='text' name='new-title'>
   <label for='new-bookmark'>Bookmark url</label>
   <input type='text' name='new-bookmark'>
-  <input type='submit' value='Save'>
+  <input type='submit' value='Update'>
 </form>
