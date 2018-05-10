@@ -24,13 +24,22 @@ describe CommanderData do
     end
   end
 
+  describe '#add' do
+    it 'returns the sql stuff' do
+      title = 'Google'
+      url = 'http://google.com'
+      described_class.add(title, url, connection)
+      expect(connection).to have_received(:exec).with("INSERT INTO bookmarks(title, url) VALUES('#{title}', '#{url}')")
+    end
+  end
+
   describe '#delete' do
     it 'deletes the row' do
       title = 'Google'
       url = 'http://google.com'
       described_class.add(title, url)
-      described_class.delete(title)
-      expect(described_class.all).to be_empty
+      described_class.delete(title, connection)
+      expect(connection).to have_received(:exec).with("DELETE FROM bookmarks WHERE title = '#{title}'")
     end
   end
 
