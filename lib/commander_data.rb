@@ -37,14 +37,3 @@ class CommanderData
   end
 
 end
-
-#
-# def self.all(bookmark_class = Bookmark)
-#   connect_to_database
-#   rs = @@con.exec "SELECT * FROM bookmarks"
-#   rs.map { |row| bookmark_class.new(row['title'], row['url']) }
-# end
-#
-# def self.add
-#
-# end
