@@ -1,14 +1,14 @@
 require 'sinatra/base'
 require 'sinatra/flash'
 
-require_relative'lib/bookmark'
+require_relative'lib/commander_data'
 
 class BookmarkManager < Sinatra::Base
   enable :sessions
   register Sinatra::Flash
 
   get '/' do
-    @bookmarks = Bookmark.all
+    @bookmarks = CommanderData.all
 
     erb(:index)
   end
@@ -18,8 +18,8 @@ class BookmarkManager < Sinatra::Base
   end
 
   post '/add-bookmark' do
-    if Bookmark.valid?(params['new-bookmark'])
-      Bookmark.add(params['new-bookmark'])
+    if CommanderData.valid?(params['new-bookmark'])
+      CommanderData.add(params['new-bookmark'])
     else
       flash[:invalid_url] = 'Invalid url'
     end
