@@ -3,10 +3,6 @@ require_relative '../lib/bookmark'
 describe Bookmark do
 
   describe '#all' do
-    it 'responds to it' do
-      expect(described_class).to respond_to(:all)
-    end
-
     it 'returns urls from database' do
       Bookmark.add('http://google.com')
       Bookmark.add('http://destroyallsoftware.com')
