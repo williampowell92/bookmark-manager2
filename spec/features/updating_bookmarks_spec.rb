@@ -3,11 +3,14 @@ feature 'updating bookmarks' do
   let(:url) { 'http://www.google.com' }
   let(:broken_url) { 'htttp://www.google.com' }
 
-  scenario 'valid bookmark' do
+  before do
     visit '/'
     add_bookmark('Boogle', 'http://www.googgle.com')
     click_link 'update bookmark'
     click_link 'Boogle'
+  end
+
+  scenario 'valid bookmark' do
     fill_in('new-bookmark', with: url)
     fill_in('new-title', with: title)
     click_button('Update')
@@ -15,10 +18,6 @@ feature 'updating bookmarks' do
   end
 
   scenario 'invalid bookmark' do
-    visit '/'
-    add_bookmark('Boogle', 'http://www.googgle.com')
-    click_link 'update bookmark'
-    click_link 'Boogle'
     fill_in('new-bookmark', with: broken_url)
     fill_in('new-title', with: title)
     click_button('Update')
