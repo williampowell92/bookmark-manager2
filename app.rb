@@ -18,7 +18,7 @@ class BookmarkManager < Sinatra::Base
   end
 
   get '/bookmarks/new' do
-    erb(:add_bookmark)
+    erb(:new_bookmark)
   end
 
   post '/bookmarks' do
@@ -38,7 +38,7 @@ class BookmarkManager < Sinatra::Base
   end
 
   get '/bookmarks/:id/edit' do
-    erb(:update_form)
+    erb(:edit_bookmark)
   end
 
   put '/bookmarks/:id' do
@@ -54,5 +54,4 @@ class BookmarkManager < Sinatra::Base
   end
 
   run! if app_file == $0
-
 end
