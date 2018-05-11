@@ -1,6 +1,6 @@
 feature 'rendering_bookmarks' do
   scenario 'displaying a list of bookmarks' do
-    visit('/')
+    visit('/bookmarks')
     add_bookmark('Google', 'http://google.com')
     add_bookmark('Destroy', 'http://destroyallsoftware.com')
     add_bookmark('Outlook', 'http://outlook.com')

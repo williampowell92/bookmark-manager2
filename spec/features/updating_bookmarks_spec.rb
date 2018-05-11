@@ -4,7 +4,7 @@ feature 'updating bookmarks' do
   let(:broken_url) { 'htttp://www.google.com' }
 
   before do
-    visit '/'
+    visit '/bookmarks'
     add_bookmark('Boogle', 'http://www.googgle.com')
     click_link 'update bookmark'
     click_link 'Boogle'

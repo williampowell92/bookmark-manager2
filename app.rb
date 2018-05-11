@@ -7,7 +7,7 @@ class BookmarkManager < Sinatra::Base
   enable :sessions
   register Sinatra::Flash
 
-  get '/' do
+  get '/bookmarks' do
     @bookmarks = CommanderData.all
 
     erb(:index)
@@ -20,7 +20,7 @@ class BookmarkManager < Sinatra::Base
   post '/add-bookmark' do
     if CommanderData.valid?(params['new-bookmark'])
       CommanderData.add(params['new-title'], params['new-bookmark'])
-      redirect('/')
+      redirect('/bookmarks')
     else
       flash[:invalid_url] = 'Invalid url'
       redirect('/add-bookmark')
@@ -36,7 +36,7 @@ class BookmarkManager < Sinatra::Base
   get '/delete-action' do
     CommanderData.delete(params['bookmark'])
 
-    redirect('/')
+    redirect('/bookmarks')
   end
 
   get '/update-bookmark' do
@@ -56,7 +56,7 @@ class BookmarkManager < Sinatra::Base
       CommanderData.update(session['old_title'],
                            params['new-title'],
                            params['new-bookmark'])
-      redirect('/')
+      redirect('/bookmarks')
     else
       flash[:invalid_url] = 'Invalid url'
       redirect('/update-form')
@@ -67,7 +67,7 @@ class BookmarkManager < Sinatra::Base
                          params['new-title'],
                          params['new-bookmark'])
 
-   redirect('/')
+   redirect('/bookmarks')
   end
 
   run! if app_file == $0
