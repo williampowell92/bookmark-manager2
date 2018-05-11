@@ -43,12 +43,12 @@ class BookmarkManager < Sinatra::Base
 
   put '/bookmarks/:id' do
     if CommanderData.valid?(params['url'])
-      CommanderData.update(params['id'],
-                           params['title'],
-                           params['url'])
+      CommanderData.update(params['id'], params['title'], params['url'])
+
       redirect('/bookmarks')
     else
       flash[:invalid_url] = 'Invalid url'
+
       redirect("/bookmarks/#{params['id']}/edit")
     end
   end
