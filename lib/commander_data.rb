@@ -18,8 +18,8 @@ class CommanderData
     !!(url =~ /\A#{URI::regexp(['http', 'https'])}\z/)
   end
 
-  def self.delete(title, connection = connect_to_database)
-    connection.exec "DELETE FROM bookmarks WHERE title = '#{title}'"
+  def self.delete(id, connection = connect_to_database)
+    connection.exec "DELETE FROM bookmarks WHERE id = '#{id}'"
   end
 
   def self.update(old_title, new_title, new_url, connection = connect_to_database)

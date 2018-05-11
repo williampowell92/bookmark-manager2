@@ -36,11 +36,9 @@ describe CommanderData do
 
   describe '#delete' do
     it 'deletes the row' do
-      title = 'Google'
-      url = 'http://google.com'
       described_class.add(title, url)
-      described_class.delete(title, connection)
-      expect(connection).to have_received(:exec).with("DELETE FROM bookmarks WHERE title = '#{title}'")
+      described_class.delete(id, connection)
+      expect(connection).to have_received(:exec).with("DELETE FROM bookmarks WHERE id = '#{id}'")
     end
   end
 

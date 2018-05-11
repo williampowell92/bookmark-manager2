@@ -7,6 +7,10 @@ class BookmarkManager < Sinatra::Base
   enable :sessions
   register Sinatra::Flash
 
+  configure do
+    use Rack::MethodOverride
+  end
+
   get '/bookmarks' do
     @bookmarks = CommanderData.all
 
@@ -27,14 +31,8 @@ class BookmarkManager < Sinatra::Base
     end
   end
 
-  get '/delete-bookmark' do
-    @bookmarks = CommanderData.all
-
-    erb(:delete_bookmark)
-  end
-
   delete '/bookmarks/:id' do
-    CommanderData.delete(params['bookmark'])
+    CommanderData.delete(params['id'])
 
     redirect('/bookmarks')
   end
