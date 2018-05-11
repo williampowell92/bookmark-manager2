@@ -7,7 +7,7 @@ class CommanderData
 
   def self.all(bookmark_class = Bookmark, connection = connect_to_database)
     rs = connection.exec "SELECT * FROM bookmarks"
-    rs.map { |row| bookmark_class.new(row['title'], row['url']) }
+    rs.map { |row| bookmark_class.new(row['id'], row['title'], row['url']) }
   end
 
   def self.add(title, url, connection = connect_to_database)

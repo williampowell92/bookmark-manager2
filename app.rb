@@ -13,17 +13,17 @@ class BookmarkManager < Sinatra::Base
     erb(:index)
   end
 
-  get '/add-bookmark' do
+  get '/bookmarks/new' do
     erb(:add_bookmark)
   end
 
-  post '/add-bookmark' do
+  post '/bookmarks' do
     if CommanderData.valid?(params['new-bookmark'])
       CommanderData.add(params['new-title'], params['new-bookmark'])
       redirect('/bookmarks')
     else
       flash[:invalid_url] = 'Invalid url'
-      redirect('/add-bookmark')
+      redirect('/bookmarks/new')
     end
   end
 
@@ -33,7 +33,7 @@ class BookmarkManager < Sinatra::Base
     erb(:delete_bookmark)
   end
 
-  get '/delete-action' do
+  delete '/bookmarks/:id' do
     CommanderData.delete(params['bookmark'])
 
     redirect('/bookmarks')

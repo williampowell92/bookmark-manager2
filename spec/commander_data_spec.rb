@@ -3,14 +3,15 @@ require_relative '../lib/commander_data'
 describe CommanderData do
   let(:bookmark_class) { double :bookmark_class, new: nil}
   let(:connection) { double :database_connection, exec: rs }
-  let(:rs) {[{'title' => 'Google', 'url' => 'http://google.com'}]}
+  let(:id) { '1' }
+  let(:title) { 'Google' }
+  let(:url) { 'http://www.google.com' }
+  let(:rs) {[{'id' => id, 'title' => title, 'url' => url}]}
 
   describe '#all' do
     it 'returns urls from database' do
-      title = 'Google'
-      url = 'http://google.com'
       described_class.all(bookmark_class, connection)
-      expect(bookmark_class).to have_received(:new).with(title, url)
+      expect(bookmark_class).to have_received(:new).with(id, title, url)
     end
   end
 

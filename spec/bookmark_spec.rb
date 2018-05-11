@@ -1,7 +1,13 @@
 require 'bookmark'
 
 describe Bookmark do
-  subject {Bookmark.new('Google', 'http://www.google.com')}
+  subject {Bookmark.new('5', 'Google', 'http://www.google.com')}
+
+  describe '#id' do
+    it 'returns the id' do
+      expect(subject.id).to eq '5'
+    end
+  end
 
   describe '#title' do
     it 'returns the title' do
