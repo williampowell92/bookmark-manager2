@@ -6,22 +6,22 @@ feature 'updating bookmarks' do
   before do
     visit '/bookmarks'
     add_bookmark('Boogle', 'http://www.googgle.com')
-    click_link 'update bookmark'
-    click_link 'Boogle'
+    click_button 'Update'
   end
 
   scenario 'valid bookmark' do
-    fill_in('new-bookmark', with: url)
-    fill_in('new-title', with: title)
+    fill_in('url', with: url)
+    fill_in('title', with: title)
     click_button('Update')
+    expect(page).to have_current_path('/bookmarks')
     expect(page).to have_link(title, href: url)
   end
 
-  scenario 'invalid bookmark' do
-    fill_in('new-bookmark', with: broken_url)
-    fill_in('new-title', with: title)
+  scenario 'invalid url' do
+    fill_in('url', with: broken_url)
+    fill_in('title', with: title)
     click_button('Update')
+    expect(page).to have_current_path(/\/bookmarks\/\d+\/edit/)
     expect(page).to have_content('Invalid url')
-    expect(page).to have_current_path('/update-form')
   end
 end

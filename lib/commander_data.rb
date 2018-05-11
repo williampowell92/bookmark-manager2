@@ -22,8 +22,8 @@ class CommanderData
     connection.exec "DELETE FROM bookmarks WHERE id = '#{id}'"
   end
 
-  def self.update(old_title, new_title, new_url, connection = connect_to_database)
-    connection.exec "UPDATE bookmarks SET title = '#{new_title}', url = '#{new_url}' WHERE title = '#{old_title}'"
+  def self.update(id, title, url, connection = connect_to_database)
+    connection.exec "UPDATE bookmarks SET title = '#{title}', url = '#{url}' WHERE id = '#{id}'"
   end
 
   private

@@ -6,6 +6,8 @@ describe CommanderData do
   let(:id) { '1' }
   let(:title) { 'Google' }
   let(:url) { 'http://www.google.com' }
+  let(:incorrect_title) { 'Boogle' }
+  let(:incorrect_url) { 'http://www.goggle.com' }
   let(:rs) {[{'id' => id, 'title' => title, 'url' => url}]}
 
   describe '#all' do
@@ -42,16 +44,11 @@ describe CommanderData do
     end
   end
 
-  fdescribe '#update' do
-    it 'updates an entry' do
-      old_title = 'Boogle'
-      old_url = 'http://goggle.com'
-      new_title = 'Google'
-      new_url = 'http://google.com'
-      described_class.add(old_title, old_url)
-      described_class.update(old_title, new_title, new_url, connection)
-      expect(connection).to have_received(:exec).with("UPDATE bookmarks SET title = '#{new_title}', url = '#{new_url}' WHERE title = '#{old_title}'")
-
+  describe '#update' do
+    fit 'updates an entry' do
+      described_class.add(incorrect_title, incorrect_url)
+      described_class.update(id, title, url, connection)
+      expect(connection).to have_received(:exec).with("UPDATE bookmarks SET title = '#{title}', url = '#{url}' WHERE id = '#{id}'")
     end
   end
 end
